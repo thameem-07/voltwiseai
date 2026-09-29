@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+@layer base {
+  /* DARK MODE ONLY (VoltWise AI Automotive Visual Baseline) */
+  :root {
+    --bg-primary: #0E100F;
+    --bg-surface: #161917;
+    --bg-elevated: #1D211E;
+    --primary-accent: #C6FF3D;
+    --primary-accent-hover: #b2ec29;
+    --primary-accent-fg: #0E100F;
+    --secondary-green: #8FE388;
+    --text-primary: #F5F3EA;
+    --text-secondary: #B1B3AA;
+    --text-muted: #777B73;
+    --border-subtle: #2A2E2A;
+    --border-strong: #383E38;
+    --info: #69B7FF;
+    --warning: #F2B84B;
+    --danger: #EA5B5B;
+    --card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.45);
+    --spotlight-glow: rgba(198, 255, 61, 0.12);
+    --recommended-border: #C6FF3D;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-accent);
+}
+
+/* Background Grids & Dots */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.bg-dots-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Animations */
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+@keyframes spotlight {
+  0% {
+    opacity: 0;
+    transform: translate(-72%, -62%) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -40%) scale(1);
+  }
+}
+
+.animate-spotlight {
+  animation: spotlight 2s ease 0.4s 1 forwards;
+}
+
+/* Hierarchy: Level 1 (Primary / Recommended) */
+.card-level-1 {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--recommended-border);
+  box-shadow: 0 0 24px -4px var(--spotlight-glow);
+  transition: all 250ms ease;
+}
+
+/* Hierarchy: Level 2 (Supporting Feature) */
+.card-level-2 {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--card-shadow);
+  transition: all 250ms ease;
+}
+.card-level-2:hover {
+  border-color: var(--border-strong);
+}
+
+/* Hierarchy: Level 3 (Small Metric / Elevated Tile) */
+.card-level-3 {
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  transition: all 200ms ease;
+}
+
+/* Spotlight Card Effect */
+.spotlight-card {
+  position: relative;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--card-shadow);
+  transition: all 250ms ease;
+}
+.spotlight-card:hover {
+  border-color: var(--border-strong);
+}
+
+/* Button & Badge Utility Classes */
+.btn-primary {
+  background-color: var(--primary-accent);
+  color: var(--primary-accent-fg);
+  font-weight: 700;
+  transition: all 200ms ease;
+}
+.btn-primary:hover {
+  background-color: var(--primary-accent-hover);
+}
+
+.btn-secondary {
+  background-color: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  font-weight: 600;
+  transition: all 200ms ease;
+}
+.btn-secondary:hover {
+  background-color: var(--bg-surface);
+  border-color: var(--border-strong);
+}
+
+.badge-demo {
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+}
+
+.badge-live {
+  background-color: rgba(198, 255, 61, 0.12);
+  color: #C6FF3D;
+  border: 1px solid rgba(198, 255, 61, 0.3);
+}
